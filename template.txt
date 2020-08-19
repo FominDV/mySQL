@@ -61,4 +61,23 @@ select sum(product.price*order_product.count) from product, order_product
  where product.id = order_product.product_id and order_product.order_id = 2;
 
 lesson 18
->>>>>>> lesson 17.01
+use shop;
+select `order`.user_name, sum(price*count) as total from `order` 
+inner join order_product on order_product.order_id = `order`.id
+inner join product on order_product.product_id = product.id
+group by `order`.user_name;
+
+select `order`.user_name, max(price) as max_price, count(*) as count_row, sum(`count`) as total_sum_products from `order` 
+inner join order_product on order_product.order_id = `order`.id
+inner join product on order_product.product_id = product.id
+group by `order`.user_name;
+
+lesson 19
+
+alter table product add index price_index(price);
+
+select `order`.user_name, max(price) as max_price, count(*) as count_row, sum(`count`) as total_sum_products from `order` 
+inner join order_product on order_product.order_id = `order`.id
+inner join product on order_product.product_id = product.id
+group by `order`.user_name
+having total_sum_products > 4;
