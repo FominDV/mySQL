@@ -10,3 +10,21 @@ select product.id, brand.type, product_type.name, category.name, category.discou
     inner join product_type on product.product_id = product_type.id
      inner join category on product.category_id = category.id
     where order_product.product_id is null;
+
+lesson 16
+
+select*from `order` 
+left join order_product on order_product.order_id = `order`.id
+left join product on product.id = order_product.product_id
+union
+select*from `order`
+inner join order_product on order_product.order_id = `order`.id
+right join product on product.id = order_product.product_id
+where `order`.id is null;
+
+lesson 17
+
+select sum(product.price*order_product.count) from product, order_product
+ where product.id = order_product.product_id and order_product.order_id = 2;
+
+lesson 18
