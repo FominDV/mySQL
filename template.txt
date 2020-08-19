@@ -1,0 +1,12 @@
+select product.id, brand.type, product_type.name, category.name, category.discount, category.alias_name, product.price from product
+inner join brand on product.brand_id = brand.id
+inner join product_type on product.product_id = product_type.id
+ inner join category on product.category_id = category.id
+
+lesson 15
+
+select product.id, brand.type, product_type.name, category.name, category.discount, category.alias_name, product.price from product
+ left join order_product on order_product.product_id = product.id inner join brand on product.brand_id = brand.id
+    inner join product_type on product.product_id = product_type.id
+     inner join category on product.category_id = category.id
+    where order_product.product_id is null;
