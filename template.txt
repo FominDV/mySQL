@@ -24,6 +24,7 @@ where `order`.id is null;
 
 lesson 17
 
+<<<<<<< refs/remotes/origin/master
 select sum(product.price*order_product.count*(100-category.discount)/100) from product, order_product, category
  where product.id = order_product.product_id and order_product.order_id = 2 and product.category_id = category.id;
 ..........................
@@ -55,3 +56,9 @@ group by `order`.user_name;
 
 lesson 19
 
+=======
+select sum(product.price*order_product.count) from product, order_product
+ where product.id = order_product.product_id and order_product.order_id = 2;
+
+lesson 18
+>>>>>>> lesson 17.01
