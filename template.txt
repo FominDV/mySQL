@@ -24,7 +24,20 @@ where `order`.id is null;
 
 lesson 17
 
-select sum(product.price*order_product.count) from product, order_product
- where product.id = order_product.product_id and order_product.order_id = 2;
+select sum(product.price*order_product.count*(100-category.discount)/100) from product, order_product, category
+ where product.id = order_product.product_id and order_product.order_id = 2 and product.category_id = category.id;
+..........................
+SELECT sum(price*count*(1-0.01*discount)) AS amount FROM order
+LEFT JOIN order_products ON order_products.order_id = order.id
+LEFT JOIN product ON order_products.product_id = product.id
+INNER JOIN category ON product.category_id = category.id
+WHERE order.id = 1;
+
+2.2)
+SELECT sum(price*count*(1-0.01*discount)) AS amount FROM order
+LEFT JOIN order_products ON order_products.order_id = order.id
+LEFT JOIN product ON order_products.product_id = product.id
+INNER JOIN category ON product.category_id = category.id
+WHERE order.id = 2;
 
 lesson 18
